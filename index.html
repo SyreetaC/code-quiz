@@ -11,12 +11,19 @@
   <body>
     <header>
       <div class="header-container">
-        <div><a href="" class="highscores-link"> View highscores</a></div>
-        <div>Remaining time: <span class="time-remaining">0 </span></div>
+        <div>
+          <a href="/highscores.html" class="highscores-link">
+            View highscores</a
+          >
+        </div>
+        <div>
+          Remaining time:
+          <span id="time-remaining" class="time-remaining">0 </span>
+        </div>
       </div>
     </header>
 
-    <section class="start-page-div">
+    <div id="start-page-div" class="start-page-div">
       <div><h2>Coding Quiz Challenge!</h2></div>
       <div>
         <h4>
@@ -28,13 +35,13 @@
       <div class="start">
         <button id="start-button" class="start-button">Start Quiz</button>
       </div>
-    </section>
+    </div>
 
-    <section class="game-page-div">
-      <div>
+    <!-- <section class="game-page-section">
+      <div class="question-header">
         <h4>Question</h4>
       </div>
-      <div>
+      <div class="answer-buttons">
         <ul>
           <button class="answer1">Answer1</button>
           <br />
@@ -45,7 +52,7 @@
           <button class="answer4">Answer4</button>
         </ul>
       </div>
-    </section>
+    </section> -->
 
     <script src="./js/script.js"></script>
   </body>
