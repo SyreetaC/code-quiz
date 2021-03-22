@@ -1,14 +1,17 @@
-const startButtonElement = document.querySelector(".start-button");
-const startGameDiv = document.querySelector(".start-page-div");
-const timerElement = document.querySelector(".time-remaining");
-const bodyElement = document.body;
+const startButtonElement = document.getElementById("start-button");
+const startGame = () => {
+  console.log("Hello");
+};
 
-let timerValue = 60;
+startButtonElement.addEventListener("click", startGame);
 
-//set timer to reduce by 1 second
-const timer = setInterval("", 1000);
+// const startGameDiv = document.querySelector("#start-page-div");
+// const timerElement = document.querySelector("#time-remaining");
+// const bodyElement = document.body;
+
+// let timerValue = 60;
+
+// //set timer to reduce by 1 second
+// const timerInterval = setInterval(timerElement, 1000);
 
 //create a function to detail what happens when the button is clicked.
-const startGame = () => {
-  startButtonElement.addEventListener("click");
-};
