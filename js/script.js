@@ -7,11 +7,12 @@ let timerValue = 60;
 
 const countdown = () => {
   const timerTick = () => {
-    timerValue -= 1;
     timerElement.textContent = timerValue;
+    timerValue -= 1;
 
-    if (timerValue === 0) {
+    if (timerValue < 0) {
       clearInterval(timer);
+      alert("GAME OVER!"); //create 'game over' container
     }
   };
   const timer = setInterval(timerTick, 1000);
@@ -51,10 +52,3 @@ const startGame = () => {
 };
 
 startButtonElement.addEventListener("click", startGame);
-
-// let timerValue = 60;
-
-// //set timer to reduce by 1 second
-// const timerInterval = setInterval(timerElement, 1000);
-
-//create a function to detail what happens when the button is clicked.
