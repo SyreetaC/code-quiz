@@ -22,3 +22,12 @@ body {
   border-radius: 10%;
   background-color: yellow;
 }
+
+.game-page-section {
+  border: 1px solid black;
+  height: 100px;
+}
+
+.question-header h4 {
+  font-size: 40px;
+}
