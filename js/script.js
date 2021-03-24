@@ -60,6 +60,7 @@ const createChoices = (answers) => {
     const answersDiv = document.createElement("div");
     const answerButtons = document.createElement("button");
     answerButtons.setAttribute("data-answer", answer);
+    answerButtons.setAttribute("class", "answer-btn");
     answerButtons.textContent = answer;
 
     answersDiv.appendChild(answerButtons);
@@ -68,7 +69,7 @@ const createChoices = (answers) => {
     //Sets the number of buttons to the number of answers in the button elements.
   };
   answers.forEach(createChoice);
-  console.log(answersDiv); //comes up undefined- why?
+  return choiceContainer;
 };
 
 const createQuestion = (question) => {
@@ -79,10 +80,11 @@ const createQuestion = (question) => {
 
   const h2 = document.createElement("h2");
   h2.textContent = question.title;
-
   questionContainer.appendChild(h2);
 
   const choices = createChoices(question.answers);
+  questionContainer.appendChild(choices);
+  return questionContainer;
 };
 
 //Constructing game elements
@@ -90,7 +92,7 @@ const constructGameContainer = () => {
   const gamePageDiv = document.createElement("div");
   gamePageDiv.setAttribute("class", "game-page-div");
 
-  gamePageDiv.appendChild(questionContainer); //Tried to append question container to main game page div.
+  gamePageDiv.appendChild(createQuestion(quizQuestions[0])); //Tried to append question container to main game page div.
   return gamePageDiv;
 };
 
@@ -101,8 +103,24 @@ const startGame = () => {
   const gamePageDiv = constructGameContainer();
   bodyElement.removeChild(startGameDiv); //Removes start page
   bodyElement.appendChild(gamePageDiv); //fix CSS for this appended child!
-  createQuestion(quizQuestions[0]);
+
   countdown();
 };
 
 startButtonElement.addEventListener("click", startGame);
+document.addEventListener("click", (event) => {
+  if (event.target.className === "answer-btn") {
+    console.log("CLICKED ON ANSWER BUTTON");
+    console.log(event.target.getAttribute("data-answer"));
+
+    nextQuestion();
+  }
+});
+
+const nextQuestion = () => {
+  if ("answer-btn" === question.CorrectAnswer) {
+    console.log("Correct");
+  } else {
+    alert("STOP!");
+  }
+};
