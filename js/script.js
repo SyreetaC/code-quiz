@@ -58,6 +58,7 @@ const createChoices = (answers) => {
 
   const createChoice = (answer) => {
     const answersDiv = document.createElement("div");
+    answersDiv.setAttribute("class", "answer-container");
     const answerButtons = document.createElement("button");
     answerButtons.setAttribute("data-answer", answer);
     answerButtons.setAttribute("class", "answer-btn");
@@ -79,6 +80,7 @@ const createQuestion = (question) => {
   questionContainer.setAttribute("data-answer", question.correctAnswer);
 
   const h2 = document.createElement("h2");
+  h2.setAttribute("class", "question-header");
   h2.textContent = question.title;
   questionContainer.appendChild(h2);
 
