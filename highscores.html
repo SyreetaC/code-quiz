@@ -8,22 +8,17 @@
     <title>High scores</title>
   </head>
   <body>
-    <header>
-      <div>
-        <h2>Highscores</h2>
-      </div>
-
-      <div>
-        <form>
-          <label>Initials:</label>
-          <input
-            type="text"
-            id="initials"
-            placeholder="Type your initials here."
-          />
-        </form>
-      </div>
-    </header>
+    <h1 class="high-score-h1">High scores</h1>
+    <div>
+      <table class="score-table">
+        <tr>
+          <th>Player name</th>
+          <th>Score</th>
+        </tr>
+        <td id="player-name">Name</td>
+        <td id="player-score">Score</td>
+      </table>
+    </div>
     <script src="js/highscores.js"></script>
   </body>
 </html>
