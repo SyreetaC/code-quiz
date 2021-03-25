@@ -101,6 +101,8 @@ const verifyChoice = (event) => {
       index += 1;
       bodyElement.appendChild(createQuestion(quizQuestions[index]));
     } else {
+      questionContainer.removeChild(document.getElementById("question"));
+
       const wrongAnswer = document.createElement("h2");
       wrongAnswer.setAttribute("id", "wrongAnswer");
       wrongAnswer.textContent = "Try again";
@@ -117,6 +119,16 @@ const constructGameContainer = () => {
   gamePageDiv.appendChild(createQuestion(quizQuestions[index])); //Append question container to main game page div.
   return gamePageDiv;
 };
+
+if (index < questions.length) {
+  const formContainer = document.createElement("div");
+  const form = document.createElement("form");
+  const label = document.createElement("label");
+  const input = document.createElement("input");
+
+  bodyElement.removeChild(gamePageDiv);
+  formContainer.appendChild(form, label, input);
+}
 
 const startButtonElement = document.getElementById("start-button");
 //Start of game
