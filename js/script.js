@@ -38,7 +38,6 @@ const quizQuestions = [
 const bodyElement = document.body;
 const startGameDiv = document.getElementById("start-page-div");
 const timerElement = document.getElementById("time-remaining");
-
 let timerValue = 60;
 
 const countdown = () => {
@@ -92,35 +91,35 @@ const constructGameContainer = () => {
   const gamePageDiv = document.createElement("div");
   gamePageDiv.setAttribute("class", "game-page-div");
 
-  gamePageDiv.appendChild(createQuestion(quizQuestions[0])); //Tried to append question container to main game page div.
+  gamePageDiv.appendChild(createQuestion(quizQuestions[0])); //Append question container to main game page div.
   return gamePageDiv;
 };
 
 const startButtonElement = document.getElementById("start-button");
 //Start of game
 const startGame = () => {
-  // console.log(constructGameContainer);
-  const gamePageDiv = constructGameContainer();
   bodyElement.removeChild(startGameDiv); //Removes start page
+  const gamePageDiv = constructGameContainer();
+
   bodyElement.appendChild(gamePageDiv); //fix CSS for this appended child!
 
+  quizQuestions.forEach(createQuestion); //for each quiz question run create question function.
   countdown();
 };
 
 startButtonElement.addEventListener("click", startGame);
 document.addEventListener("click", (event) => {
   if (event.target.className === "answer-btn") {
-    console.log("CLICKED ON ANSWER BUTTON");
     console.log(event.target.getAttribute("data-answer"));
 
-    nextQuestion();
+    // nextQuestion();
   }
 });
 
-const nextQuestion = () => {
-  if ("answer-btn" === question.CorrectAnswer) {
-    console.log("Correct");
-  } else {
-    alert("STOP!");
-  }
-};
+// const nextQuestion = () => {
+//   if ("answer-btn" === question.CorrectAnswer) {
+//     console.log("Correct");
+//   } else {
+//     alert("STOP!");
+//   }
+// };
