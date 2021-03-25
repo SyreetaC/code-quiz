@@ -94,8 +94,11 @@ const verifyChoice = (event) => {
   if (target.matches("button")) {
     const answer = target.getAttribute("data-answer");
     const correctAnswer = currentTarget.getAttribute("data-answer");
-    console.log(answer);
-    console.log(correctAnswer);
+
+    if (answer === correctAnswer) {
+      bodyElement.removeChild(gamePageDiv);
+      bodyElement.appendChild(createQuestion(quizQuestions[index]));
+    }
   }
 };
 
@@ -122,13 +125,3 @@ const startGame = () => {
 };
 
 startButtonElement.addEventListener("click", startGame);
-
-// document.addEventListener("click", (event) => {});
-
-// // const nextQuestion = () => {
-// //   if ("answer-btn" === question.CorrectAnswer) {
-// //     console.log("Correct");
-// //   } else {
-// //     alert("STOP!");
-// //   }
-// // };
