@@ -91,7 +91,19 @@ const createQuestion = (question) => {
   return questionContainer;
 };
 
+//Constructing game elements
+const constructGameContainer = () => {
+  const gamePageDiv = document.createElement("div");
+  gamePageDiv.setAttribute("class", "game-page-div");
+  bodyElement.appendChild(gamePageDiv);
+  gamePageDiv.appendChild(createQuestion(quizQuestions[index])); //Append question container to main game page div.
+  return gamePageDiv;
+};
+
 const verifyChoice = (event) => {
+  const questionContainer = question;
+  const questionElement = document.getElementById("question");
+  const gamePageDiv = document.querySelector(".game-page-div");
   const target = event.target;
   const currentTarget = event.currentTarget;
   if (target.matches("button")) {
@@ -102,7 +114,8 @@ const verifyChoice = (event) => {
       index += 1;
       bodyElement.appendChild(createQuestion(quizQuestions[index]));
     } else {
-      questionContainer.removeChild(document.getElementById("question"));
+      console.log(questionContainer);
+      questionContainer.removeChild();
 
       const wrongAnswer = document.createElement("h2");
       wrongAnswer.setAttribute("id", "wrongAnswer");
@@ -115,20 +128,11 @@ const verifyChoice = (event) => {
     const form = document.createElement("form");
     const label = document.createElement("label");
     const input = document.createElement("input");
-
-    bodyElement.removeChild("game-page-div"); //stuck here
+    console.log(document.querySelector(".game-page-div"));
+    gamePageDiv.removeChild(questionElement);
     formContainer.appendChild(form, label, input);
     bodyElement.appendChild(formContainer);
   }
-};
-
-//Constructing game elements
-const constructGameContainer = () => {
-  const gamePageDiv = document.createElement("div");
-  gamePageDiv.setAttribute("class", "game-page-div");
-  bodyElement.appendChild(gamePageDiv);
-  gamePageDiv.appendChild(createQuestion(quizQuestions[index])); //Append question container to main game page div.
-  return gamePageDiv;
 };
 
 const startButtonElement = document.getElementById("start-button");
