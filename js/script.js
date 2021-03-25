@@ -2,25 +2,25 @@ const quizQuestions = [
   {
     title: "Which HTML element do we put the Javascript inside?",
     answers: ["js", "script", "javascript"],
-    correctAnswer: 1,
+    correctAnswer: "script",
   },
 
   {
     title: "How do you add a comment in Javascript?",
     answers: ["//", "<!--->", "This is a comment"],
-    correctAnswer: 0,
+    correctAnswer: "//",
   },
 
   {
     title: "Which one of these is a Javascript key word?",
     answers: ["const", "lot", "create", "proof"],
-    correctAnswer: 0,
+    correctAnswer: "const",
   },
 
   {
     title: "What statement supplies the value of a function?",
     answers: ["track", "return", "let", "value"],
-    correctAnswer: 1,
+    correctAnswer: "return",
   },
 
   {
@@ -31,7 +31,7 @@ const quizQuestions = [
       "To test the code we have written",
       "To show the value of variables",
     ],
-    correctAnswer: 2,
+    correctAnswer: "To test the code we have written",
   },
 ];
 
@@ -84,7 +84,19 @@ const createQuestion = (question) => {
 
   const choices = createChoices(question.answers);
   questionContainer.appendChild(choices);
+  questionContainer.addEventListener("click", verifyChoice);
   return questionContainer;
+};
+
+const verifyChoice = (event) => {
+  const target = event.target;
+  const currentTarget = event.currentTarget;
+  if (target.matches("button")) {
+    const answer = target.getAttribute("data-answer");
+    const correctAnswer = currentTarget.getAttribute("data-answer");
+    console.log(answer);
+    console.log(correctAnswer);
+  }
 };
 
 //Constructing game elements
@@ -104,24 +116,19 @@ const startGame = () => {
 
   bodyElement.appendChild(gamePageDiv); //fix CSS for this appended child!
 
-  quizQuestions.forEach(createQuestion); //for each quiz question run create question function.
+  createQuestion(quizQuestions[index]); //for each quiz question run create question function.
 
   countdown();
 };
 
 startButtonElement.addEventListener("click", startGame);
-document.addEventListener("click", (event) => {
-  if (event.target.className === "answer-btn") {
-    console.log(event.target.getAttribute("data-answer"));
 
-    // nextQuestion();
-  }
-});
+// document.addEventListener("click", (event) => {});
 
-// const nextQuestion = () => {
-//   if ("answer-btn" === question.CorrectAnswer) {
-//     console.log("Correct");
-//   } else {
-//     alert("STOP!");
-//   }
-// };
+// // const nextQuestion = () => {
+// //   if ("answer-btn" === question.CorrectAnswer) {
+// //     console.log("Correct");
+// //   } else {
+// //     alert("STOP!");
+// //   }
+// // };
