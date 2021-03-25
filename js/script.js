@@ -110,13 +110,13 @@ const verifyChoice = (event) => {
       createQuestion.appendChild("wrongAnswer");
     }
   }
-  if (index < questions.length) {
+  if (index < quizQuestions.length) {
     const formContainer = document.createElement("div");
     const form = document.createElement("form");
     const label = document.createElement("label");
     const input = document.createElement("input");
 
-    bodyElement.removeChild(gamePageDiv);
+    "game-page-div".removeChild("game-page-div");
     formContainer.appendChild(form, label, input);
     bodyElement.appendChild(formContainer);
   }
@@ -126,7 +126,7 @@ const verifyChoice = (event) => {
 const constructGameContainer = () => {
   const gamePageDiv = document.createElement("div");
   gamePageDiv.setAttribute("class", "game-page-div");
-
+  bodyElement.appendChild(gamePageDiv);
   gamePageDiv.appendChild(createQuestion(quizQuestions[index])); //Append question container to main game page div.
   return gamePageDiv;
 };
@@ -135,9 +135,7 @@ const startButtonElement = document.getElementById("start-button");
 //Start of game
 const startGame = () => {
   bodyElement.removeChild(startGameDiv); //Removes start page
-  const gamePageDiv = constructGameContainer();
-
-  bodyElement.appendChild(gamePageDiv); //fix CSS for this appended child!
+  constructGameContainer();
 
   createQuestion(quizQuestions[index]); //for each quiz question run create question function.
 
