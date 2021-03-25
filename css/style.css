@@ -49,3 +49,11 @@ body {
 .question-header {
   text-align: center;
 }
+
+.score-table tr th td {
+  border: solid black 2px;
+}
+
+.high-score-h1 {
+  margin-left: 40%;
+}
