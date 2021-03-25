@@ -116,7 +116,7 @@ const verifyChoice = (event) => {
     const label = document.createElement("label");
     const input = document.createElement("input");
 
-    "game-page-div".removeChild("game-page-div");
+    bodyElement.removeChild("game-page-div"); //stuck here
     formContainer.appendChild(form, label, input);
     bodyElement.appendChild(formContainer);
   }
