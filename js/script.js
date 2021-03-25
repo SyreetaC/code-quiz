@@ -98,8 +98,13 @@ const verifyChoice = (event) => {
     const correctAnswer = currentTarget.getAttribute("data-answer");
 
     if (answer === correctAnswer) {
-      bodyElement.removeChild(gamePageDiv);
+      index += 1;
       bodyElement.appendChild(createQuestion(quizQuestions[index]));
+    } else {
+      const wrongAnswer = document.createElement("h2");
+      wrongAnswer.setAttribute("id", "wrongAnswer");
+      wrongAnswer.textContent = "Try again";
+      createQuestion.appendChild("wrongAnswer");
     }
   }
 };
