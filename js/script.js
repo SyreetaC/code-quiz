@@ -36,6 +36,7 @@ const quizQuestions = [
 ];
 
 const bodyElement = document.body;
+const gameContainer = document.getElementById("game-container");
 const startGameDiv = document.getElementById("start-page-div");
 const timerElement = document.getElementById("time-remaining");
 let timerValue = 60;
@@ -88,6 +89,8 @@ const createQuestion = (question) => {
   questionContainer.appendChild(choices);
   questionContainer.addEventListener("click", verifyChoice);
 
+  gameContainer.appendChild(questionContainer);
+
   return questionContainer;
 };
 
@@ -101,9 +104,7 @@ const constructGameContainer = () => {
 };
 
 const verifyChoice = (event) => {
-  const questionContainer = question;
-  const questionElement = document.getElementById("question");
-  const gamePageDiv = document.querySelector(".game-page-div");
+  const questionContainer = document.getElementById("question");
   const target = event.target;
   const currentTarget = event.currentTarget;
   if (target.matches("button")) {
@@ -111,35 +112,33 @@ const verifyChoice = (event) => {
     const correctAnswer = currentTarget.getAttribute("data-answer");
 
     if (answer === correctAnswer) {
-      index += 1;
-      bodyElement.appendChild(createQuestion(quizQuestions[index]));
-    } else {
-      console.log(questionContainer);
-      questionContainer.removeChild();
+      if (index === quizQuestions.length - 1) {
+        const formContainer = document.createElement("div");
+        const form = document.createElement("form");
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        gameContainer.removeChild(questionContainer);
+        formContainer.appendChild(form, label, input);
+        bodyElement.appendChild(formContainer);
+      } else {
+        index += 1;
 
+        gameContainer.removeChild(questionContainer);
+        createQuestion(quizQuestions[index]);
+      }
+    } else {
       const wrongAnswer = document.createElement("h2");
       wrongAnswer.setAttribute("id", "wrongAnswer");
       wrongAnswer.textContent = "Try again";
       createQuestion.appendChild("wrongAnswer");
     }
   }
-  if (index < quizQuestions.length) {
-    const formContainer = document.createElement("div");
-    const form = document.createElement("form");
-    const label = document.createElement("label");
-    const input = document.createElement("input");
-    console.log(document.querySelector(".game-page-div"));
-    gamePageDiv.removeChild(questionElement);
-    formContainer.appendChild(form, label, input);
-    bodyElement.appendChild(formContainer);
-  }
 };
 
 const startButtonElement = document.getElementById("start-button");
 //Start of game
 const startGame = () => {
-  bodyElement.removeChild(startGameDiv); //Removes start page
-  constructGameContainer();
+  gameContainer.removeChild(startGameDiv); //Removes start page
 
   createQuestion(quizQuestions[index]); //for each quiz question run create question function.
 
