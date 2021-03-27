@@ -195,7 +195,6 @@ const submitForm = (event) => {
       localStorage.setItem("score", score);
     }
   }
-  submitButtonContent.addEventListener("click", submitForm);
   //navigate to the highscores page
   window.location.href = "./highscores.html";
 };
