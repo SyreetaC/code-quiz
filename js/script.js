@@ -39,7 +39,7 @@ const bodyElement = document.body;
 const gameContainer = document.getElementById("game-container");
 const startGameDiv = document.getElementById("start-page-div");
 const timerElement = document.getElementById("time-remaining");
-let timerValue = 60;
+let timerValue = 30;
 let index = 0;
 
 const countdown = () => {
@@ -48,8 +48,11 @@ const countdown = () => {
     timerValue -= 1;
 
     if (timerValue < 0) {
-      clearInterval(timer);
-      alert("GAME OVER!"); //create 'game over' container
+      if (timer === 0) {
+        const score = timer;
+        clearInterval(timer);
+        alert("GAME OVER!"); //create 'game over' container
+      }
     }
   };
   const timer = setInterval(timerTick, 1000);
@@ -112,15 +115,13 @@ const verifyChoice = (event) => {
     const correctAnswer = currentTarget.getAttribute("data-answer");
 
     if (answer === correctAnswer) {
+      const correct = document.createElement("h2");
+      correct.setAttribute("id", "correct-answer");
+      correct.textContent = "Well done!!!";
+      questionContainer.appendChild(correct);
+
       if (index === quizQuestions.length - 1) {
-        console.log("questions");
-        const formContainer = document.createElement("div");
-        const form = document.createElement("form");
-        const label = document.createElement("label");
-        const input = document.createElement("input");
-        // gameContainer.removeChild(questionContainer);
-        gameContainer.appendChild(formContainer);
-        formContainer.appendChild(form, label, input);
+        gameOver();
       } else {
         index += 1;
 
@@ -140,6 +141,63 @@ const verifyChoice = (event) => {
       }
     }
   }
+};
+
+//ends game and presents form
+const gameOver = () => {
+  const questionContainer = document.getElementById("question");
+  const gameContainer = document.getElementById("game-container");
+  timerElement.remove();
+  gameContainer.removeChild(questionContainer);
+
+  //create elements for game over screen
+  const scoreDiv = document.createElement("div");
+  scoreDiv.setAttribute("class", "question-container");
+  const scoreHeader = document.createElement("h1");
+  const scoreParagraph = document.createElement("p");
+  const scoreForm = document.createElement("form");
+  const scoreLabel = document.createElement("label");
+  const scoreInput = document.createElement("input");
+  const scoreButton = document.createElement("button");
+
+  scoreHeader.textContent = "Game over!";
+  scoreParagraph.textContent = "Your final score is" + score;
+  scoreLabel.textContent = "Enter your name: ";
+  scoreButton.textContent = "Submit";
+
+  //append game over screen elements onto the gameContainer Div
+  gameContainer.appendChild(scoreDiv);
+  scoreDiv.appendChild(scoreHeader);
+  scoreDiv.appendChild(scoreParagraph);
+  scoreDiv.appendChild(scoreForm);
+  scoreForm.appendChild(scoreLabel);
+  scoreForm.appendChild(scoreInput);
+  scoreInput.setAttribute("type", "text");
+  scoreInput.setAttribute("id", "score-input");
+  scoreForm.appendChild(scoreButton);
+  scoreButton.setAttribute("type", "submit");
+  scoreButton.setAttribute("id", "score-button");
+};
+
+const submitButtonContent = document.getElementById("score-button");
+const submitForm = (event) => {
+  event.preventDefault();
+  const scoreInputContent = document.getElementById("score-input").value;
+  //record the initials and score in local storage if no existing value stored
+  let currentHighScore = localStorage.getItem("score");
+  if (currentHighScore === null) {
+    localStorage.setItem("initials", scoreInputContent);
+    localStorage.setItem("score", score);
+  } else {
+    currentHighScore = parseInt(currentHighScore);
+    //record the initials and score in local storage if score is higher than current value stored
+    if (score > currentHighScore) {
+      localStorage.setItem("initials", scoreInputContent);
+      localStorage.setItem("score", score);
+    }
+  }
+  //navigate to the highscores page
+  window.location.href = "./highscores.html";
 };
 
 const startButtonElement = document.getElementById("start-button");
