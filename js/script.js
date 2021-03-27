@@ -48,11 +48,8 @@ const countdown = () => {
     timerValue -= 1;
 
     if (timerValue < 0) {
-      if (timer === 0) {
-        const score = timer;
-        clearInterval(timer);
-        alert("GAME OVER!"); //create 'game over' container
-      }
+      clearInterval(timer);
+      gameOver();
     }
   };
   const timer = setInterval(timerTick, 1000);
@@ -145,6 +142,8 @@ const verifyChoice = (event) => {
 
 //ends game and presents form
 const gameOver = () => {
+  const score = timerElement.textContent; //sets score based on value of timerElement.
+
   const questionContainer = document.getElementById("question");
   const gameContainer = document.getElementById("game-container");
   timerElement.remove();
@@ -196,6 +195,7 @@ const submitForm = (event) => {
       localStorage.setItem("score", score);
     }
   }
+  submitButtonContent.addEventListener("click", submitForm);
   //navigate to the highscores page
   window.location.href = "./highscores.html";
 };
