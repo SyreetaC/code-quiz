@@ -113,13 +113,14 @@ const verifyChoice = (event) => {
 
     if (answer === correctAnswer) {
       if (index === quizQuestions.length - 1) {
+        console.log("questions");
         const formContainer = document.createElement("div");
         const form = document.createElement("form");
         const label = document.createElement("label");
         const input = document.createElement("input");
-        gameContainer.removeChild(questionContainer);
+        // gameContainer.removeChild(questionContainer);
+        gameContainer.appendChild(formContainer);
         formContainer.appendChild(form, label, input);
-        bodyElement.appendChild(formContainer);
       } else {
         index += 1;
 
@@ -128,9 +129,15 @@ const verifyChoice = (event) => {
       }
     } else {
       const wrongAnswer = document.createElement("h2");
-      wrongAnswer.setAttribute("id", "wrongAnswer");
-      wrongAnswer.textContent = "Try again";
-      createQuestion.appendChild("wrongAnswer");
+      wrongAnswer.setAttribute("id", "wrong-answer");
+      wrongAnswer.textContent = "Try again!!!";
+      questionContainer.appendChild(wrongAnswer);
+
+      if (timerValue > 10) {
+        timerValue -= 10;
+      } else {
+        timerValue = 1;
+      }
     }
   }
 };
