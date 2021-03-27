@@ -197,7 +197,7 @@ const submitForm = (event) => {
     currentHighScore = parseInt(currentHighScore);
     //record the initials and score in local storage if score is higher than current value stored
     if (score > currentHighScore) {
-      localStorage.setItem("initials", scoreInputContent);
+      localStorage.setItem("initials", scoreInput);
       localStorage.setItem("score", score);
     }
   }
