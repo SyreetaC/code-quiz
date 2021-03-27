@@ -57,3 +57,9 @@ body {
 .high-score-h1 {
   margin-left: 40%;
 }
+
+#wrong-answer {
+  color: red;
+  text-align: center;
+  font-size: 50px;
+}
