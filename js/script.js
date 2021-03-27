@@ -176,11 +176,15 @@ const gameOver = () => {
   scoreForm.appendChild(scoreButton);
   scoreButton.setAttribute("type", "submit");
   scoreButton.setAttribute("id", "score-button");
+
+  const submitButtonContent = document.getElementById("score-button");
+  submitButtonContent.addEventListener("click", submitForm);
 };
 
 //FOCUS ON THIS PART!!!
-const submitButtonContent = document.getElementById("score-button");
+
 const submitForm = (event) => {
+  const score = timerElement.textContent;
   event.preventDefault();
   const scoreInputContent = document.getElementById("score-input").value;
   //record the initials and score in local storage if no existing value stored
