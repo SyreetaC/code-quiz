@@ -178,6 +178,7 @@ const gameOver = () => {
   scoreButton.setAttribute("id", "score-button");
 };
 
+//FOCUS ON THIS PART!!!
 const submitButtonContent = document.getElementById("score-button");
 const submitForm = (event) => {
   event.preventDefault();
