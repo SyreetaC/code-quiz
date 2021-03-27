@@ -184,13 +184,14 @@ const gameOver = () => {
 //FOCUS ON THIS PART!!!
 
 const submitForm = (event) => {
-  const score = timerElement.textContent;
   event.preventDefault();
-  const scoreInputContent = document.getElementById("score-input").value;
-  //record the initials and score in local storage if no existing value stored
+  const score = timerElement.textContent;
+
+  const scoreInput = document.getElementById("score-input").value;
+  // Stores score and initials in local Storage.
   let currentHighScore = localStorage.getItem("score");
   if (currentHighScore === null) {
-    localStorage.setItem("initials", scoreInputContent);
+    localStorage.setItem("initials", scoreInput);
     localStorage.setItem("score", score);
   } else {
     currentHighScore = parseInt(currentHighScore);
