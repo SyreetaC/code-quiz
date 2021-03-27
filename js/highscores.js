@@ -7,7 +7,32 @@ const backToStart = () => {
 
 const clearScores = () => {
   localStorage.clear();
+  onload();
+};
+
+const getFromLocalStorage = () => {
+  const highscores = localStorage.getItem("highscores");
+  if (highscores) {
+    return highscores;
+  } else {
+    return [];
+  }
+};
+
+const renderHighScoreTable = (highscores) => {
+  if (highscores.length === 0) {
+    console.log("empty");
+  } else {
+    console.log("create table");
+  }
+};
+
+const onLoad = () => {
+  const highscores = getFromLocalStorage();
+  renderHighScoreTable(highscores);
 };
 
 returnButton.addEventListener("click", backToStart);
 clearButton.addEventListener("click", clearScores);
+
+window.addEventListener("load", onLoad);
