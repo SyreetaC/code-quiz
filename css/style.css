@@ -63,3 +63,9 @@ body {
   text-align: center;
   font-size: 50px;
 }
+
+#correct-answer {
+  color: green;
+  text-align: center;
+  font-size: 50px;
+}
