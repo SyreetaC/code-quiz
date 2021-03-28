@@ -25,10 +25,13 @@ const renderHighScoreTable = (highscores) => {
 };
 
 const constructHighScoresText = () => {
+  const initials = localStorage.getItem("initials");
+  const score = localStorage.getItem("score");
+
   const scoreContainer = document.getElementById("score-container");
   const highScoreContent = document.createElement("div");
   highScoreContent.setAttribute("id", "highScoreContent");
-  highScoreContent.textContent = highscores;
+  highScoreContent.textContent = initials + score;
   scoreContainer.appendChild(highScoreContent);
 };
 
