@@ -1,20 +1,15 @@
 const returnButton = document.getElementById("return-button");
 const clearButton = document.getElementById("clear-scores-button");
-const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 const backToStart = () => {
   location.href = "/index.html";
 };
 
-const clearScores = () => {
-  localStorage.clear();
-  onLoad();
-};
-
 const getFromLocalStorage = () => {
-  const highscores = localStorage.getItem("highscores");
+  const highscores = localStorage.getItem("highScores");
   if (highscores) {
-    return highscores;
+    return highScores;
   } else {
     return [];
   }
@@ -28,9 +23,18 @@ const renderHighScoreTable = (highscores) => {
   }
 };
 
+const constructHighScoresList = () => {
+  const 
+};
+
 const onLoad = () => {
   const highscores = getFromLocalStorage();
   renderHighScoreTable(highscores);
+};
+
+const clearScores = () => {
+  localStorage.clear();
+  onLoad();
 };
 
 returnButton.addEventListener("click", backToStart);
