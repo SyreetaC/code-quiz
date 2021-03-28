@@ -185,7 +185,6 @@ const submitForm = (event) => {
   event.preventDefault();
 
   const score = timerElement.textContent;
-  console.log(score);
   const initials = document.getElementById("score-input");
   // Stores score and initials in local Storage.
   if (initials !== "") {
