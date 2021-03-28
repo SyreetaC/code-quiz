@@ -1,30 +1,35 @@
 const returnButton = document.getElementById("return-button");
 const clearButton = document.getElementById("clear-scores-button");
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+const highscores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 const backToStart = () => {
   location.href = "/index.html";
 };
 
 const getFromLocalStorage = () => {
-  const highscores = localStorage.getItem("highScores");
-  if (highscores) {
-    return highScores;
+  const highScore = localStorage.getItem("highScores");
+  if (highScore) {
+    return highScore;
   } else {
     return [];
   }
 };
 
 const renderHighScoreTable = (highscores) => {
+  getFromLocalStorage();
   if (highscores.length === 0) {
     console.log("empty");
   } else {
-    console.log("create table");
+    constructHighScoresText();
   }
 };
 
-const constructHighScoresList = () => {
-  const 
+const constructHighScoresText = () => {
+  const scoreContainer = document.getElementById("score-container");
+  const highScoreContent = document.createElement("div");
+  highScoreContent.setAttribute("id", "highScoreContent");
+  highScoreContent.textContent = highscores;
+  scoreContainer.appendChild(highScoreContent);
 };
 
 const onLoad = () => {
