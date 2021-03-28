@@ -183,23 +183,28 @@ const gameOver = () => {
 
 //FOCUS ON THIS PART!!!
 
+const getHighScores = () => {
+  let highScores = localStorage.getItem("highScores");
+  if (highScores) {
+    highScores = JSON.parse(highScores);
+  } else {
+    return [];
+  }
+};
+
 const submitForm = (event) => {
   event.preventDefault();
   const score = timerElement.textContent;
+  const initials = document.getElementById("score-input");
 
-  const scoreInput = document.getElementById("score-input").value;
   // Stores score and initials in local Storage.
-  let currentHighScore = localStorage.getItem("score");
-  if (currentHighScore === null) {
-    localStorage.setItem("initials", scoreInput);
-    localStorage.setItem("score", score);
-  } else {
-    currentHighScore = parseInt(currentHighScore);
-    //record the initials and score in local storage if score is higher than current value stored
-    if (score > currentHighScore) {
-      localStorage.setItem("initials", scoreInput);
-      localStorage.setItem("score", score);
-    }
+  if (initials !== "") {
+    const highScore = {
+      initials: initials.value,
+      score: score.value,
+    };
+    const highScores = getHighScores();
+    highScores.push(highScore);
   }
   //navigate to the highscores page
   window.location.href = "./highscores.html";
