@@ -41,7 +41,7 @@ const startGameDiv = document.getElementById("start-page-div");
 const timerElement = document.getElementById("time-remaining");
 let timerValue = 30;
 let index = 0;
-const highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 const countdown = () => {
   const timerTick = () => {
@@ -143,7 +143,7 @@ const verifyChoice = (event) => {
 
 //ends game and presents form
 const gameOver = () => {
-  const score = timerElement.textContent; //sets score based on value of timerElement.
+  const score = timerElement.textContent; //sets score based on value of timerElement
 
   const questionContainer = document.getElementById("question");
   const gameContainer = document.getElementById("game-container");
@@ -177,30 +177,27 @@ const gameOver = () => {
   scoreForm.appendChild(scoreButton);
   scoreButton.setAttribute("type", "submit");
   scoreButton.setAttribute("id", "score-button");
-
   const submitButtonContent = document.getElementById("score-button");
   submitButtonContent.addEventListener("click", submitForm);
 };
 
-//FOCUS ON THIS PART!!!
-
 const submitForm = (event) => {
   event.preventDefault();
-  const score = timerElement.textContent;
-  const initials = document.getElementById("score-input");
 
+  const score = timerElement.textContent;
+  console.log(score);
+  const initials = document.getElementById("score-input");
   // Stores score and initials in local Storage.
   if (initials !== "") {
-    const highScore = {
+    let highScore = {
+      score: score,
       initials: initials.value,
-      score: score.value,
     };
     highScores.push(highScore);
     localStorage.setItem("highScores", JSON.stringify(highScores));
   }
-
   //navigate to the highscores page
-  window.location.href = "./highscores.html";
+  location.href = "./highscores.html";
 };
 
 const startButtonElement = document.getElementById("start-button");
