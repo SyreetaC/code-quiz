@@ -1,5 +1,6 @@
 const returnButton = document.getElementById("return-button");
 const clearButton = document.getElementById("clear-scores-button");
+const highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
 const backToStart = () => {
   location.href = "/index.html";
@@ -7,7 +8,7 @@ const backToStart = () => {
 
 const clearScores = () => {
   localStorage.clear();
-  onload();
+  onLoad();
 };
 
 const getFromLocalStorage = () => {

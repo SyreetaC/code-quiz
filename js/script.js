@@ -41,6 +41,7 @@ const startGameDiv = document.getElementById("start-page-div");
 const timerElement = document.getElementById("time-remaining");
 let timerValue = 30;
 let index = 0;
+const highScores = JSON.parse(localStorage.getItem("highscores")) || [];
 
 const countdown = () => {
   const timerTick = () => {
@@ -183,15 +184,6 @@ const gameOver = () => {
 
 //FOCUS ON THIS PART!!!
 
-const getHighScores = () => {
-  let highScores = localStorage.getItem("highScores");
-  if (highScores) {
-    highScores = JSON.parse(highScores);
-  } else {
-    return [];
-  }
-};
-
 const submitForm = (event) => {
   event.preventDefault();
   const score = timerElement.textContent;
@@ -203,9 +195,10 @@ const submitForm = (event) => {
       initials: initials.value,
       score: score.value,
     };
-    const highScores = getHighScores();
     highScores.push(highScore);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
   }
+
   //navigate to the highscores page
   window.location.href = "./highscores.html";
 };
