@@ -52,8 +52,13 @@ const countdown = () => {
       clearInterval(timer);
       gameOver();
     }
+
+    if (index === quizQuestions.length) {
+      clearInterval(timer);
+      gameOver();
+    }
   };
-  const timer = setInterval(timerTick, 1000);
+  timer = setInterval(timerTick, 1000);
 };
 const createChoices = (answers) => {
   const choiceContainer = document.createElement("div");

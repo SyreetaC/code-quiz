@@ -1,15 +1,15 @@
 const returnButton = document.getElementById("return-button");
 const clearButton = document.getElementById("clear-scores-button");
-const highscores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 const backToStart = () => {
-  location.href = "/index.html";
+  location.href = "./index.html";
 };
 
+//get existing data from local storage
 const getFromLocalStorage = () => {
-  const highScore = localStorage.getItem("highScores");
-  if (highScore) {
-    return highScore;
+  const highScores = JSON.parse(localStorage.getItem("highScores"));
+  if (highScores) {
+    return highScores;
   } else {
     return [];
   }
@@ -25,14 +25,14 @@ const renderHighScoreTable = (highscores) => {
 };
 
 const constructHighScoresText = () => {
-  const initials = localStorage.getItem("initials");
-  const score = localStorage.getItem("score");
+  const initials = JSON.parse(localStorage.getItem("initials"));
+  const score = JSON.parse(localStorage.getItem("score"));
 
   const scoreContainer = document.getElementById("score-container");
   const highScoreContent = document.createElement("div");
   highScoreContent.setAttribute("id", "highScoreContent");
-  highScoreContent.textContent = initials + score;
-  scoreContainer.appendChild(highScoreContent);
+  highScoreContent.textContent = `${initials} - ${score}`;
+  scoreContainer.append(highScoreContent);
 };
 
 const onLoad = () => {
