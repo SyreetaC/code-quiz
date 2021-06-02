@@ -165,6 +165,7 @@ const gameOver = () => {
   const scoreInput = document.createElement("input");
   const scoreButton = document.createElement("button");
 
+  clearInterval(timer);
   scoreHeader.textContent = "Game over!";
   scoreParagraph.textContent = "Your final score is" + score;
   scoreLabel.textContent = "Enter your name: ";

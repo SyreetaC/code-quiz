@@ -24,9 +24,11 @@ const renderHighScoreTable = (highscores) => {
   }
 };
 
-const constructHighScoresText = () => {
-  const initials = JSON.parse(localStorage.getItem("initials"));
-  const score = JSON.parse(localStorage.getItem("score"));
+const constructHighScoresTable = () => {
+  const initials = localStorage.getItem("initials");
+  console.log(initials);
+  const score = localStorage.getItem("score");
+  console.log(score);
 
   const scoreContainer = document.getElementById("score-container");
   const highScoreContent = document.createElement("div");
