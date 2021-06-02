@@ -28,7 +28,6 @@ const constructHighScoreTable = () => {
 //get existing data from local storage
 const getFromLocalStorage = () => {
   const highScores = JSON.parse(localStorage.getItem("highScores"));
-  console.log(highScores); //why does this show twice?
   if (highScores) {
     return highScores;
   } else {
