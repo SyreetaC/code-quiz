@@ -18,7 +18,7 @@ https://github.com/SyreetaC/code-quiz
 
 Here are some screenshots of my deployed application:
 
-![Screenshot1](<./assets/screenshots/Screenshot%20(16).png>)
-![Screenshot2](<assets/screenshots/Screenshot%20(17).png>)
-![Screenshot3](<assets/screenshots/Screenshot%20(18).png>)
-![Screenshot4](<assets/screenshots/Screenshot%20(19).png>)
+![Screenshot1](<./../assets/screenshots/Screenshot%20(16).png>)
+![Screenshot2](<./../assets/screenshots/Screenshot%20(17).png>)
+![Screenshot3](<./../assets/screenshots/Screenshot%20(18).png>)
+![Screenshot4](<./../assets/screenshots/Screenshot%20(19).png>)
