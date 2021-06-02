@@ -5,11 +5,24 @@ const backToStart = () => {
   location.href = "./index.html";
 };
 
-const writeToTable = (highscores) => {};
+const writeToTable = (item, index) => {
+  constructHighScoreTable();
+  // const highScoreTable = document.getElementById("highScoreTable");
+  // row = highScoreTable.insertRow();
+  // row.insertCell().textContent =
+  // row.insertCell().textContent =
+};
+
 const constructHighScoreTable = () => {
-  const highScoreTable = document.createElement("highScoreTable");
-  table.setAttribute("class", "highScoreTable");
-  table.setAttribute("id", "highScoreTable");
+  const highScoreTable = document.createElement("table");
+  highScoreTable.setAttribute("class", "highScoreTable");
+  highScoreTable.setAttribute("id", "highScoreTable");
+  const tableContainer = document.getElementById("tableContainer");
+  tableContainer.appendChild(highScoreTable);
+
+  row = highScoreTable.insertRow();
+  row.insertCell().textContent = "Initials";
+  row.insertCell().textContent = "Score";
 };
 
 //get existing data from local storage
