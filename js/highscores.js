@@ -5,9 +5,17 @@ const backToStart = () => {
   location.href = "./index.html";
 };
 
+const writeToTable = (highscores) => {};
+const constructHighScoreTable = () => {
+  const highScoreTable = document.createElement("highScoreTable");
+  table.setAttribute("class", "highScoreTable");
+  table.setAttribute("id", "highScoreTable");
+};
+
 //get existing data from local storage
 const getFromLocalStorage = () => {
   const highScores = JSON.parse(localStorage.getItem("highScores"));
+  console.log(highScores); //why does this show twice?
   if (highScores) {
     return highScores;
   } else {
@@ -15,31 +23,18 @@ const getFromLocalStorage = () => {
   }
 };
 
-const renderHighScoreTable = (highscores) => {
-  getFromLocalStorage();
-  if (highscores.length === 0) {
-    console.log("empty");
+const renderHighScoreTable = () => {
+  const highscores = getFromLocalStorage();
+  if (highscores) {
+    highscores.map(writeToTable);
   } else {
-    constructHighScoresText();
+    console.log("there are no scores");
   }
-};
-
-const constructHighScoresTable = () => {
-  const initials = localStorage.getItem("initials");
-  console.log(initials);
-  const score = localStorage.getItem("score");
-  console.log(score);
-
-  const scoreContainer = document.getElementById("score-container");
-  const highScoreContent = document.createElement("div");
-  highScoreContent.setAttribute("id", "highScoreContent");
-  highScoreContent.textContent = `${initials} - ${score}`;
-  scoreContainer.append(highScoreContent);
 };
 
 const onLoad = () => {
   const highscores = getFromLocalStorage();
-  renderHighScoreTable(highscores);
+  renderHighScoreTable();
 };
 
 const clearScores = () => {
