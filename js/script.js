@@ -39,7 +39,7 @@ const bodyElement = document.body;
 const gameContainer = document.getElementById("game-container");
 const startGameDiv = document.getElementById("start-page-div");
 const timerElement = document.getElementById("time-remaining");
-let timerValue = 30;
+let timerValue = 60;
 let index = 0;
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
