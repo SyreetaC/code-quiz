@@ -5,12 +5,12 @@ const backToStart = () => {
   location.href = "./index.html";
 };
 
-const writeToTable = (item, index) => {
+const writeToTable = (highScores) => {
   constructHighScoreTable();
-  // const highScoreTable = document.getElementById("highScoreTable");
-  // row = highScoreTable.insertRow();
-  // row.insertCell().textContent =
-  // row.insertCell().textContent =
+  const highScoreTable = document.getElementById("highScoreTable");
+  row = highScoreTable.insertRow();
+  row.insertCell().textContent = highScores.initials;
+  row.insertCell().textContent = highScores.score;
 };
 
 const constructHighScoreTable = () => {
